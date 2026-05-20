@@ -1,0 +1,231 @@
+@import "tailwindcss";
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  * {
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease,
+      border-color 0.3s ease;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: "Inter", sans-serif;
+  }
+
+  .font-serif {
+    font-family: "Playfair Display", serif;
+  }
+}
+
+.theme-transition {
+  transition: opacity 0.3s ease;
+}
+
+/* 🌞 LIGHT MODE (default) */
+:root {
+  --color-background: #f0f2f5;
+  --color-foreground: #0f1418;
+
+  --color-card: #ffffff;
+
+  --color-primary: #20b2a6;
+  --color-primary-foreground: #ffffff;
+
+  --color-secondary: #e5e7eb;
+  --color-secondary-foreground: #20b2a6;
+
+  --color-muted: #d1d5db;
+  --color-muted-foreground: #4b5563;
+
+  --color-border: #e5e7eb;
+
+  --radius: 0.75rem;
+
+  --color-highlight: #f5a623;
+  --color-surface: #ffffff;
+}
+
+/* 🌙 DARK MODE */
+.dark {
+  /* Match the deep pitch-black background */
+  --color-background: #000000;
+  --color-foreground: #f5f5f5;
+
+  /* Slightly lighter off-black for cards/surfaces to show depth */
+  --color-card: #0a0a0a;
+  --color-surface: #121212;
+
+  /* Pure neon red for the bright horizons and glowing points */
+  --color-primary: #9d0303;
+  --color-primary-foreground: #ffffff;
+
+  /* Deep muted crimson for secondary elements, borders, and subtle networks */
+  --color-secondary: #2a0004;
+  --color-secondary-foreground: #ff3344;
+
+  /* Dark gray-red tints for background layout lines and muted text */
+  --color-muted: #160d0e;
+  --color-muted-foreground: #8a7375;
+
+  /* The subtle grid line color */
+  --color-border: #3a0a0d;
+
+  /* Blazing hot-spot highlight color (near-white red glow cores) */
+  --color-highlight: #ff6666;
+}
+
+/* 2. REGISTRASI KE TAILWIND V4 THEME */
+@theme {
+  /* Memetakan variabel ke utility classes standar Tailwind */
+  --color-background: var(--color-background);
+  --color-foreground: var(--color-foreground);
+  --color-card: var(--color-card);
+  --color-surface: var(--color-surface);
+
+  --color-primary: var(--color-primary);
+  --color-primary-foreground: var(--color-primary-foreground);
+
+  --color-secondary: var(--color-secondary);
+  --color-secondary-foreground: var(--color-secondary-foreground);
+
+  --color-muted-fg: var(--color-muted-foreground);
+  --color-border-custom: var(--color-border);
+  --color-highlight: var(--color-highlight);
+
+  --radius-base: var(--radius);
+}
+
+/* 3. MENDEFINISIKAN STRATEGI TOGGLE MANUAL DI V4 */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* @layer utilities {
+
+  .bg-background {
+    background-color: var(--color-background);
+  }
+
+  .bg-card {
+    background-color: var(--color-card);
+  }
+
+  .bg-surface {
+    background-color: var(--color-surface);
+  }
+
+  .text-foreground {
+    color: var(--color-foreground);
+  }
+
+  .text-muted {
+    color: var(--color-muted-foreground);
+  }
+
+  .text-primary {
+    color: var(--color-primary);
+  }
+
+  .border-base {
+    border-color: var(--color-border);
+  }
+
+  .bg-primary {
+    background-color: var(--color-primary);
+  }
+
+  .text-primary-foreground {
+    color: var(--color-primary-foreground);
+  }
+
+  .rounded-base {
+    border-radius: var(--radius);
+  }
+} */
+
+@layer components {
+  .glass {
+    background-color: color-mix(in srgb, var(--color-surface) 50%, transparent);
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+    border: 1px solid color-mix(in srgb, var(--color-border) 50%, transparent);
+  }
+  .glass-strong {
+    background-color: color-mix(in srgb, var(--color-surface) 80%, transparent);
+    -webkit-backdrop-filter: blur(24px);
+    backdrop-filter: blur(24px);
+    border: 1px solid color-mix(in srgb, var(--color-border) 60%, transparent);
+  }
+
+  .glow-text {
+    text-shadow: 0 0 30px
+      color-mix(in srgb, var(--color-primary) 50%, transparent);
+  }
+  .glow-border {
+    box-shadow:
+      0 0 20px color-mix(in srgb, var(--color-primary) 20%, transparent),
+      inset 0 0 20px color-mix(in srgb, var(--color-primary) 5%, transparent);
+  }
+}
+
+@layer utilities {
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+      filter: blur(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+    }
+  }
+
+  @keyframes slow-drift {
+    0%,
+    100% {
+      transform: translate(0, 0);
+    }
+    25% {
+      transform: translate(20px, -30px);
+    }
+    50% {
+      transform: translate(-15px, -20px);
+    }
+    75% {
+      transform: translate(30px, 10px);
+    }
+  }
+  .animate-fade-in {
+    animation: fade-in 0.4s ease-out both;
+  }
+
+  .animate-delay-100 {
+    animation-delay: 100ms;
+  }
+
+  .animate-delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .animate-delay-300 {
+    animation-delay: 300ms;
+  }
+
+  .animate-delay-400 {
+    animation-delay: 400ms;
+  }
+
+  .animate-delay-500 {
+    animation-delay: 500ms;
+  }
+
+  .animate-delay-800 {
+    animation-delay: 800ms;
+  }
+}
