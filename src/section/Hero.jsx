@@ -92,7 +92,8 @@ const Hero = () => {
 
           {/* CTA */}
           <div className="">
-            <Button children="Contact Me">
+            <Button>
+              Contact Me
               <ArrowRight className="w-4 h-4" />
             </Button>
           </div>
@@ -129,6 +130,22 @@ const Hero = () => {
                 alt="profile pic"
                 className="w-full aspect-[4/5] rounded-2xl object-cover"
               />
+
+              {/* floating badge */}
+              <div className="absolute -bottom-4 -right-4 glass rounded-xl px-4 py-3 animate-float ">
+                <div className="flex items-center gap-3">
+                  <div className="w-3 h-3 rounded-full bg-green-500" />
+                  <span className="text-sm font-md">Open to Work</span>
+                </div>
+              </div>
+
+              {/* Stats Badge */}
+              <div className="absolute -top-4 -left-4 glass rounded-xl px-4 py-3 animate-float">
+                <div className="text-2xl font-bold text-primary">2+</div>
+                <div className="text-xs text-muted-foreground">
+                  Years of Experience
+                </div>
+              </div>
             </div>
           </div>
         </div>
