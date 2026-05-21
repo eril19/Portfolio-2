@@ -14,6 +14,28 @@ const Hero = () => {
       href: "https://instagram.com",
     },
   ];
+
+  const techSkills = [
+    "SSIS",
+    "SSRS",
+    "Tableau",
+    "PowerBI",
+    "Microsoft SQL Server",
+    "PostgreSQL",
+    "ReactJS",
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "AngularJS",
+    "Java",
+    "TypeScript",
+    "Python",
+    "Apache Sparks",
+    "Apache Airflow",
+    "Google Big Query",
+    "Hadoop",
+    "Kafka",
+  ];
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden">
       {/* BG */}
@@ -151,10 +173,21 @@ const Hero = () => {
         </div>
 
         {/* Skills Section */}
-        <div className="">
-          <p>Tech Skills</p>
-          <div className="">
-            <div className=""></div>
+        <div className="mt-20 animate-fade-in animate-delay-600">
+          <p className="text-sm muted-foreground-color mb-6 text-center">
+            {" "}
+            Tech Skills
+          </p>
+          <div className="relative overflow-hidden">
+            <div className="flex animate-marquee">
+              {[...techSkills, ...techSkills].map((skill, i) => (
+                <div className="flex-shrink-0 px-8 py-4" key={i}>
+                  <span className="text-xl font-semibold text-muted-foreground/50 hover:text-muted-foreground transition-colors">
+                    {skill}
+                  </span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
