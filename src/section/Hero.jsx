@@ -149,6 +149,14 @@ const Hero = () => {
             </div>
           </div>
         </div>
+
+        {/* Skills Section */}
+        <div className="">
+          <p>Tech Skills</p>
+          <div className="">
+            <div className=""></div>
+          </div>
+        </div>
       </div>
     </section>
   );
