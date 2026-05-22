@@ -1,6 +1,6 @@
 import React from "react";
 import Button from "@/components/Button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ChevronDown } from "lucide-react";
 import * as FaIcons from "react-icons/fa";
 import * as IoIcons from "react-icons/io5";
 
@@ -17,6 +17,7 @@ const Hero = () => {
 
   const techSkills = [
     "SSIS",
+    "Pentaho",
     "SSRS",
     "Tableau",
     "PowerBI",
@@ -81,91 +82,98 @@ const Hero = () => {
       </div>
 
       {/* CONTENT */}
-      <div className="container pb-20 relative z-10 mx-auto pt-32 pb-20">
-        <div className="grid lg:grid-cols-2 gap-12  items-center">
+      <div className="container mx-auto px-6 pb-20 relative z-10  pt-32 pb-20">
+        {/* grid */}
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* left col */}
           <div className="space-y-8">
+            {/* badge */}
             <div className="animate-fade-in">
               <span className="inline-flex items-center gap-2 py-2 px-4 rounded-full glass text-sm text-primary">
                 <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
                 Data Engineer • ETL Developer
               </span>
             </div>
+
+            {/* headline */}
+            <div className="space-y-4">
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight animate-fade-in animate-delay-100">
+                From
+                <span className="text-primary glow-text"> raw data</span>
+                <br /> to <br />
+                <span className="text-primary glow-text">
+                  refined insights,
+                </span>
+                <br />
+                <span className="font-serif italic font-normal ">
+                  seamlessly.
+                </span>
+              </h1>
+              <p className="text-lg text-muted-fg max-w-lg animate-delay-300 animate-fade-in">
+                Hi, I'm Eril – a data engineer specializing in Python, SQL, and
+                ETL automation. I build robust data pipelines and turn raw
+                numbers into clear, impactful insights through visual reporting.
+              </p>
+            </div>
+
+            {/* CTA */}
+            <div className="">
+              <Button className="hover:cursor-pointer">
+                Contact Me
+                <ArrowRight className="w-4 h-4" />
+              </Button>
+            </div>
+
+            {/* Social Links */}
+            <div className="flex items-center gap-4 animate-fade-in animate-delay-400">
+              <span className="text-sm text-muted-fg">Follow Me:</span>
+              {socialLinks.map((social, i) => {
+                const IconComponent = social.lib[social.iconName];
+                return (
+                  <a
+                    href={social.link}
+                    key={i}
+                    className="text-gray-600 hover:bg-primary/10 hover:text-primary p-2 rounded-full glass transition-all duration-200"
+                  >
+                    {/* {<social.icon />} */}
+                    {IconComponent ? (
+                      <IconComponent size={24} className="w-5 h-5" />
+                    ) : null}
+                  </a>
+                );
+              })}
+            </div>
           </div>
 
-          {/* headline */}
-          <div className="space-y-4">
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight animate-fade-in animate-delay-100">
-              From
-              <span className="text-primary glow-text"> raw data</span>
-              <br /> to <br />
-              <span className="text-primary glow-text">refined insights,</span>
-              <br />
-              <span className="font-serif italic font-normal ">
-                seamlessly.
-              </span>
-            </h1>
-            <p className="text-lg text-muted-foreground max-w-lg animate-delay-300 animate-fade-in">
-              Hi, I'm Eril – a data engineer specializing in Python, SQL, and
-              ETL automation. I build robust data pipelines and turn raw numbers
-              into clear, impactful insights through visual reporting.
-            </p>
-          </div>
-
-          {/* CTA */}
-          <div className="">
-            <Button>
-              Contact Me
-              <ArrowRight className="w-4 h-4" />
-            </Button>
-          </div>
-
-          {/* Social Links */}
-          <div className="flex items-center gap-4 animate-fade-in animate-delay-400">
-            <span className="text-sm text-muted-foreground">Follow Me:</span>
-            {socialLinks.map((social, i) => {
-              const IconComponent = social.lib[social.iconName];
-              return (
-                <a
-                  href={social.link}
-                  key={i}
-                  className="text-gray-600 hover:bg-primary/10 hover:text-primary p-2 rounded-full glass transition-all duration-200"
-                >
-                  {/* {<social.icon />} */}
-                  {IconComponent ? (
-                    <IconComponent size={24} className="w-5 h-5" />
-                  ) : null}
-                </a>
-              );
-            })}
-          </div>
-        </div>
-
-        {/* right col */}
-        <div className="relative animate-delay-300 animate-fade-in">
-          {/* profile image */}
-          <div className="relative max-w-md mx-auto">
-            <div className="absolute inset-0 rounded-3xl bg-gradient-to-br-from-primary/30 via-transparent-to-primary/10 blur-2xl animate-pulse" />
-            <div className="relative glass rounded-3xl p-2 glow-border">
-              <img
-                src=""
-                alt="profile pic"
-                className="w-full aspect-[4/5] rounded-2xl object-cover"
+          {/* right col */}
+          <div className="relative animate-delay-300 animate-fade-in">
+            {/* profile image */}
+            <div className="relative max-w-md mx-auto">
+              <div
+                className="absolute inset-0 rounded-3xl bg-gradient-to-br from-primary/30 
+              via-transparent to-primary/10 blur-2xl animate-pulse"
               />
+              <div className="relative glass rounded-3xl p-2 glow-border">
+                <img
+                  src="./src/assets/user.jpg"
+                  alt="profile pic"
+                  className="w-full aspect-[4/5] rounded-2xl object-cover"
+                />
 
-              {/* floating badge */}
-              <div className="absolute -bottom-4 -right-4 glass rounded-xl px-4 py-3 animate-float ">
-                <div className="flex items-center gap-3">
-                  <div className="w-3 h-3 rounded-full bg-green-500" />
-                  <span className="text-sm font-md">Open to Work</span>
+                {/* floating badge */}
+                <div className="absolute -bottom-4 -right-4 glass rounded-xl px-4 py-3 animate-float ">
+                  <div className="flex items-center gap-3">
+                    <div className="w-3 h-3 rounded-full bg-green-500" />
+                    <span className="text-sm font-md">Open to Work</span>
+                  </div>
                 </div>
-              </div>
 
-              {/* Stats Badge */}
-              <div className="absolute -top-4 -left-4 glass rounded-xl px-4 py-3 animate-float">
-                <div className="text-2xl font-bold text-primary">2+</div>
-                <div className="text-xs text-muted-foreground">
-                  Years of Experience
+                {/* Stats Badge */}
+                <div className="absolute -top-4 -left-4 glass rounded-xl px-4 py-3 animate-float">
+                  <div className="text-2xl font-bold text-primary">2+</div>
+                  <div className="text-xs text-muted-fg">
+                    Years of Experience
+                  </div>
                 </div>
               </div>
             </div>
@@ -174,15 +182,12 @@ const Hero = () => {
 
         {/* Skills Section */}
         <div className="mt-20 animate-fade-in animate-delay-600">
-          <p className="text-sm muted-foreground-color mb-6 text-center">
-            {" "}
-            Tech Skills
-          </p>
+          <p className="text-sm text-muted-fg mb-6 text-center"> Tech Skills</p>
           <div className="relative overflow-hidden">
             <div className="flex animate-marquee">
               {[...techSkills, ...techSkills].map((skill, i) => (
                 <div className="flex-shrink-0 px-8 py-4" key={i}>
-                  <span className="text-xl font-semibold text-muted-foreground/50 hover:text-muted-foreground transition-colors">
+                  <span className="text-xl font-semibold text-muted-fg/50 hover:text-muted-fg transition-colors hover:cursor-pointer">
                     {skill}
                   </span>
                 </div>
@@ -190,6 +195,17 @@ const Hero = () => {
             </div>
           </div>
         </div>
+      </div>
+
+      {/* SCROLL BUTTON */}
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-fade-in animate-delay-800 hover:cursor-pointer">
+        <a
+          href="#about"
+          className="flex flex-col items-center gap-2 text-muted-fg hover:text-primary"
+        >
+          <span className="text-xs uppercase tracking-wider">Scroll</span>
+          <ChevronDown className="w-6 h-6 animate-bounce" />
+        </a>
       </div>
     </section>
   );
