@@ -54,7 +54,7 @@
 /* 🌙 DARK MODE */
 .dark {
   /* Match the deep pitch-black background */
-  --color-background: #000000d8;
+  --color-background: #000000;
   --color-foreground: #f5f5f5;
 
   /* Slightly lighter off-black for cards/surfaces to show depth */
